@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="send">Отправить</string>>
+    <string name="next">Продолжить</string>>
+    <string name="greetings">Привет, Username!</string>
+    <string name="sex">Пол:</string>
+    <string name="age">Возраст:</string>
+    <string name="allowed">Вход разрешен:</string>
+    <string name="disallowed">Вход запрещен:</string>
+    <string name="describe_yourself">Расскажи о себе.\nЭто необходимо, чтобы подбирать\nпартнёров за столом</string>
+    <string name="error">Ошибка в запросе, повторите запрос</string>
+    <string name="loading">Загрузка...</string>
 </resources>
