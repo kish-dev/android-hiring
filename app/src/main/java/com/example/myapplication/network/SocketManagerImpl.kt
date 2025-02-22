@@ -20,7 +20,6 @@ class SocketManagerImpl(
     private var socket: Socket? = null
     private val lock = Any()
 
-    @Synchronized
     override fun connect() {
         synchronized(lock) {
             close()
@@ -28,7 +27,6 @@ class SocketManagerImpl(
         }
     }
 
-    @Synchronized
     override fun send(request: TestRequest, reSendTimes: Int) {
         synchronized(lock) {
             checkConnection()
@@ -58,7 +56,6 @@ class SocketManagerImpl(
         }
     }
 
-    @Synchronized
     override fun receive(): TestResponse {
         synchronized(lock) {
             checkConnection()
@@ -78,7 +75,6 @@ class SocketManagerImpl(
         }
     }
 
-    @Synchronized
     override fun close() {
         synchronized(lock) {
             try {
