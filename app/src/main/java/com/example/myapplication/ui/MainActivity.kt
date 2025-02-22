@@ -45,8 +45,6 @@ class MainActivity : AppCompatActivity() {
             viewModel.pickGender(Gender.FEMALE)
         }
 
-        binding.nextButton.isActivated
-
         binding.nextButton.setOnClickListener {
             viewModel.getAllowState()
         }
@@ -62,14 +60,14 @@ class MainActivity : AppCompatActivity() {
                     binding.errorTextview.text = getText(R.string.error)
                     binding.allowedTextview.visibility = View.GONE
                     binding.nextButton.text = getText(R.string.next)
-                    binding.nextButton.isActivated = false
+                    binding.nextButton.isEnabled = false
                     binding.nextButton.setBackgroundColor(getColor(R.color.secondary_gray))
                     observeGender(Gender.UNKNOWN)
                     observeAge(0)
                     Log.e(MAIN_ACTIVITY_TAG, uiState.exception)
                 }
                 UiState.Idle -> {
-                    binding.nextButton.isActivated = false
+                    binding.nextButton.isEnabled = false
                     binding.nextButton.setBackgroundColor(getColor(R.color.secondary_gray))
                     binding.errorTextview.visibility = View.GONE
                     binding.allowedTextview.visibility = View.GONE
@@ -80,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                 is UiState.Data -> {
                     binding.errorTextview.visibility = View.GONE
                     if(uiState.isLoading) {
-                        binding.nextButton.isActivated = false
+                        binding.nextButton.isEnabled = false
                         binding.nextButton.setBackgroundColor(getColor(R.color.secondary_gray))
                         binding.nextButton.text = getText(R.string.loading)
                     } else {
@@ -112,10 +110,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeButton(gender: Gender, pickedAge: Int) {
         if (gender != Gender.UNKNOWN && pickedAge in 1..99) {
-            binding.nextButton.isActivated = true
+            binding.nextButton.isEnabled = true
             binding.nextButton.setBackgroundColor(getColor(R.color.primary_green))
         } else {
-            binding.nextButton.isActivated = false
+            binding.nextButton.isEnabled = false
             binding.nextButton.setBackgroundColor(getColor(R.color.secondary_gray))
         }
         binding.nextButton.text = getText(R.string.next)
