@@ -1,41 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main"
+    xmlns:tools="http://schemas.android.com/tools"
+>
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_green"
-        tools:context=".ui.MainActivity">
+    >
 
-        <ImageView
-            android:id="@+id/maleicon"
-            android:layout_width="wrap_content"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:src="@drawable/maleicon"
-        />
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="13dp"
+            app:cardCornerRadius="18dp"
+        >
 
-        <ImageView
-            android:id="@+id/femaleicon"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/maleicon"
-            android:src="@drawable/femaleicon"
-        />
+            tools:context=".ui.MainActivity">
 
-        <Button
-            android:id="@+id/button1"
-            app:layout_constraintTop_toBottomOf="@id/femaleicon"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/send"
-        />
+            <TextView
+                android:id="@+id/greetings_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/greetings"
+                android:textSize="14sp"
+                android:lineHeight="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/secondary_gray"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="9dp"
+            />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/describe_yourself_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="17dp"
+                android:gravity="center"
+                tools:text="@string/describe_yourself"
+                android:textSize="14sp"
+                android:lineHeight="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/greetings_textview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="12dp"
+            />
+
+            <TextView
+                android:id="@+id/sex_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/sex"
+                android:textSize="14sp"
+                android:lineHeight="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="@id/icons_layout"
+                app:layout_constraintBottom_toBottomOf="@id/icons_layout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/icons_layout"
+                android:layout_marginTop="12dp"
+            />
+
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:id="@+id/icons_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/describe_yourself_textview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sex_textview"
+            >
+
+                <FrameLayout
+                    android:id="@+id/frame_male_background"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/shadow_background"
+                    android:layout_marginStart="5dp"
+                >
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/male_cardview"
+                        android:layout_gravity="center"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="0dp"
+                    >
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/maleicon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleType="center"
+                            android:src="@drawable/maleicon"/>
+
+                    </androidx.cardview.widget.CardView>
+
+                </FrameLayout>
+
+
+                <FrameLayout
+                    android:id="@+id/frame_female_background"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/shadow_background"
+                    android:layout_marginStart="5dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/female_cardview"
+                        android:layout_gravity="center"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="0dp">
+
+                        <ImageView
+                            android:id="@+id/femaleicon"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/femaleicon"
+                        />
+
+                    </androidx.cardview.widget.CardView>
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/age_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/age"
+                android:textSize="14sp"
+                android:lineHeight="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="@id/age_picker"
+                app:layout_constraintBottom_toBottomOf="@id/age_picker"
+                app:layout_constraintStart_toStartOf="@id/sex_textview"
+                android:layout_marginTop="12dp"
+            />
+
+            <NumberPicker
+                android:layout_marginVertical="12dp"
+                android:id="@+id/age_picker"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                app:layout_constraintTop_toBottomOf="@+id/icons_layout"
+                app:layout_constraintStart_toStartOf="@+id/icons_layout"
+                app:layout_constraintEnd_toEndOf="@+id/icons_layout"
+            />
+
+            <Button
+                android:id="@+id/next_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/age_picker"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/allowed_textview"
+                android:layout_marginBottom="14dp"
+                android:text="@string/next"
+            />
+
+            <TextView
+                android:id="@+id/allowed_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/allowed"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                android:layout_marginBottom="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/next_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/error_textview"
+            />
+
+            <TextView
+                android:id="@+id/error_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/allowed"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                android:layout_marginBottom="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/allowed_textview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
+
+
 </layout>
